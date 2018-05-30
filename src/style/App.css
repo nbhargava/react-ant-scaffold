@@ -1,0 +1,16 @@
+.main-content {
+  padding-top: 2vw;
+  padding-bottom: 1em;
+
+  width: 600px;
+  margin: auto;
+}
+
+@media (max-width: 660px) {
+  .main-content {
+    width: 100%;
+
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
