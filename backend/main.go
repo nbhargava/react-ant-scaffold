@@ -71,6 +71,7 @@ func redirectToHTTPS(handler http.Handler) http.Handler {
 			}
 			http.Redirect(w, r, target, http.StatusTemporaryRedirect)
 		} else {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
 			handler.ServeHTTP(w, r)
 		}
 	})

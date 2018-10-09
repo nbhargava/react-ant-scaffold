@@ -1,4 +1,4 @@
-FROM golang:1.10-alpine as go-build
+FROM golang:1.11-alpine as go-build
 
 RUN mkdir -p /go/src/app
 WORKDIR /go/src/app
