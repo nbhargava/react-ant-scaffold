@@ -1,7 +1,7 @@
-FROM node:9.9-alpine as yarn-build
+FROM node:11.8-alpine as yarn-build
 
 WORKDIR /usr
-COPY ./package.json ./yarn.lock ./tsconfig.json ./tslint.json ./config-overrides.js /usr/
+COPY ./package.json ./yarn.lock ./tsconfig.json ./config-overrides.js /usr/
 RUN yarn
 
 CMD ["yarn", "start"]

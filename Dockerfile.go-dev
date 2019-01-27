@@ -14,4 +14,5 @@ CMD ["gin", "--port", "8080", "--appPort", "8081", "run", "*.go"]
 RUN go get github.com/NYTimes/gziphandler && \
     go get github.com/lib/pq && \
     go get github.com/golang-migrate/migrate && \
+    go get github.com/hashicorp/go-multierror && \
     go get github.com/gorilla/sessions

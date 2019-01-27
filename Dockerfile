@@ -8,6 +8,7 @@ RUN apk add --no-cache git gcc musl-dev
 RUN go get github.com/NYTimes/gziphandler && \
     go get github.com/lib/pq && \
     go get github.com/golang-migrate/migrate && \
+    go get github.com/hashicorp/go-multierror && \
     go get github.com/gorilla/sessions
 
 COPY ./backend/ /go/src/app
@@ -16,10 +17,10 @@ RUN go build -o run-app main.go
 
 
 
-FROM node:9.9-alpine as yarn-build
+FROM node:11.8-alpine as yarn-build
 
 WORKDIR /usr
-COPY ./package.json ./yarn.lock ./tsconfig.json ./tsconfig.prod.json ./tslint.json ./config-overrides.js /usr/
+COPY ./package.json ./yarn.lock ./tsconfig.json ./config-overrides.js /usr/
 RUN yarn
 
 COPY ./src /usr/src
