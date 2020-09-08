@@ -1,4 +1,4 @@
-FROM golang:1.11-alpine as go-build
+FROM golang:1.15-alpine as go-build
 
 RUN mkdir -p /go/src/app
 WORKDIR /go/src/app
@@ -17,14 +17,14 @@ RUN go build -o run-app main.go
 
 
 
-FROM node:11.8-alpine as yarn-build
+FROM node:12.18-alpine as yarn-build
 
 WORKDIR /usr
-COPY ./package.json ./yarn.lock ./tsconfig.json ./config-overrides.js /usr/
+COPY ./frontend/package.json ./frontend/yarn.lock ./frontend/tsconfig.json ./frontend/config-overrides.js /usr/
 RUN yarn
 
-COPY ./src /usr/src
-COPY ./public /usr/public
+COPY ./frontend/src /usr/src
+COPY ./frontend/public /usr/public
 
 RUN yarn build
 

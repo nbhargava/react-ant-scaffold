@@ -1,7 +1,7 @@
-FROM node:11.8-alpine as yarn-build
+FROM node:12.18-alpine as yarn-build
 
 WORKDIR /usr
-COPY ./package.json ./yarn.lock ./tsconfig.json ./config-overrides.js /usr/
+COPY ./frontend/package.json ./frontend/yarn.lock ./frontend/tsconfig.json ./frontend/config-overrides.js /usr/
 RUN yarn
 
 CMD ["yarn", "start"]

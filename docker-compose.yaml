@@ -15,12 +15,13 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     volumes:
-      - "./src:/usr/src"
-      - "./public:/usr/public"
+      - "./frontend/src:/usr/src"
+      - "./frontend/public:/usr/public"
     depends_on:
       - backend
     ports:
       - "3000:3000"
+    tty: true
 
   backend:
     build:
